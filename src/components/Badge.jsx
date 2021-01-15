@@ -1,23 +1,24 @@
 import React from 'react'
 import confLogo from '../images/badge-header.svg'
+import './styles/Badge.css'
 
-const Badge = () => {
+const Badge = ({ firstName, lastName, jobTitle, twitter, avatarUrl }) => {
   return (
-    <div>
-      <div>
+    <div className="Badge">
+      <div className="Badge__header">
         <img src={confLogo} alt="Logo de la conferencia" />
       </div>
-      <div>
-        <img src="https://www.gravatar.com/avatar?d=identicon" alt="Avatar" />
+      <div className="Badge__section-name">
+        <img className="Badge__avatar" src={avatarUrl} alt="Avatar" />
         <h1>
-          Yadu <br /> Lopez
+          {firstName} <br /> {lastName}
         </h1>
       </div>
-      <div>
-        <p>Frontend Engineer</p>
-        <p>@yadulopez</p>
+      <div className="Badge__section-info">
+        <h3>{jobTitle}</h3>
+        <div>@{twitter}</div>
       </div>
-      <div>#platziconf</div>
+      <div className="Badge__footer">#platziconf</div>
     </div>
   )
 }
