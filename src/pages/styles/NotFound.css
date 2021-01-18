@@ -1,0 +1,52 @@
+.Hero {
+  min-height: 91vh;
+  background: #000;
+  background-image: url(../../images/stars.svg);
+  background-repeat: repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Hero-container img {
+  margin-top: 18px;
+  width: 35%;
+}
+
+.Hero-container h2 {
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  margin-top: 18px;
+}
+
+.Hero-container p {
+  color: white;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 1049px) {
+  .Hero-container img {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .Hero-container img {
+    width: 65%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .Hero-container img {
+    width: 75%;
+  }
+}

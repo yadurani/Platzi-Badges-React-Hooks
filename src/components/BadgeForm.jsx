@@ -1,15 +1,10 @@
 import React from 'react'
 
-const BadgeForm = ({ onChange, valuesForm }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('Algo sucedio', valuesForm)
-  }
-
+const BadgeForm = ({ onChange, valuesForm, onSubmit }) => {
   return (
     <div>
       <h1>New Attendant</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <div className="form-group">
           <label>First Name</label>
           <input
