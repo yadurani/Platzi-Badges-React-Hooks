@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import PageLoading from '../components/PageLoading'
@@ -6,9 +6,9 @@ import Badge from '../components/Badge'
 import BadgeForm from '../components/BadgeForm'
 import header from '../images/platziconf-logo.svg'
 import api from '../api'
-import './styles/BadgeNew.css'
+import './styles/BadgeEdit.css'
 
-const BadgeNew = () => {
+const BadgeEdit = (props) => {
   const [valuesForm, setValuesForm] = useState({
     firstName: '',
     lastName: '',
@@ -16,10 +16,28 @@ const BadgeNew = () => {
     jobTitle: '',
     twitter: '',
   })
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [openModal, setOpenModal] = useState(false)
   const history = useHistory()
+  const id = props.match.params.badgeId
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const fetchData = async () => {
+    setLoading(true)
+    setError(null)
+    try {
+      const detailBadge = await api.badges.read(id)
+      setValuesForm(detailBadge)
+      setLoading(false)
+    } catch (error) {
+      setLoading(false)
+      setError(error)
+    }
+  }
+
   const handleChange = (e) => {
     const { value, name } = e.target
     setValuesForm((prevState) => ({
@@ -36,15 +54,16 @@ const BadgeNew = () => {
     })
     if (valuesFilterEmpty.length !== 0) {
       setError({
-        message: `This fields are required ${valuesFilterEmpty.join(', ')}`,
+        message: `Estos campos son obligatorios ${valuesFilterEmpty.join(
+          ', '
+        )}`,
       })
-      setOpenModal(true)
       return
     }
     setLoading(true)
     setError(null)
     try {
-      await api.badges.create(valuesForm)
+      await api.badges.update(id, valuesForm)
       setLoading(false)
       history.push('/badges')
     } catch (error) {
@@ -53,17 +72,15 @@ const BadgeNew = () => {
     }
   }
 
-  const handleCloseModal = () => setOpenModal(false)
-
   if (loading) {
     return <PageLoading />
   }
 
   return (
     <>
-      <div className="BadgeNew__hero">
+      <div className="BadgeEdit__hero">
         <img
-          className="BadgeNew__hero-image img-fluid"
+          className="BadgeEdit__hero-image img-fluid"
           src={header}
           alt="Logo"
         />
@@ -81,14 +98,12 @@ const BadgeNew = () => {
           </div>
           <div className="col-12 col-md-6 mt-4 mb-4">
             <BadgeForm
-              titleForm="New Attendant"
+              titleForm="Edit Attendant"
               onChange={handleChange}
               onSubmit={handleSubmit}
               valuesForm={valuesForm}
               loading={loading}
               error={error}
-              isOpen={openModal}
-              onClose={handleCloseModal}
             />
           </div>
         </div>
@@ -97,4 +112,4 @@ const BadgeNew = () => {
   )
 }
 
-export default BadgeNew
+export default BadgeEdit

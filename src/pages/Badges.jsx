@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import Error from '../components/Error'
@@ -11,7 +11,6 @@ const Badges = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [data, setData] = useState([])
-  const isMounted = useRef(true)
 
   const fetchData = async () => {
     setLoading(true)
@@ -28,11 +27,8 @@ const Badges = () => {
 
   useEffect(() => {
     fetchData()
-    return () => {
-      isMounted.current = false
-      console.log('this', isMounted.current)
-    }
-  }, [isMounted])
+    return () => {}
+  }, [])
 
   if (error) {
     return <Error error={error} />

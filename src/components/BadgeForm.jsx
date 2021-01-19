@@ -1,9 +1,20 @@
 import React from 'react'
 
-const BadgeForm = ({ onChange, valuesForm, onSubmit }) => {
+import ErrorNewBadgeModal from './ErrorNewBadgeModal'
+
+const BadgeForm = ({
+  onChange,
+  valuesForm,
+  onSubmit,
+  loading,
+  error,
+  titleForm,
+  isOpen,
+  onClose,
+}) => {
   return (
     <div>
-      <h1>New Attendant</h1>
+      <h1>{titleForm}</h1>
       <form onSubmit={onSubmit}>
         <div className="form-group">
           <label>First Name</label>
@@ -55,8 +66,12 @@ const BadgeForm = ({ onChange, valuesForm, onSubmit }) => {
             value={valuesForm.twitter}
           />
         </div>
-        <button className="btn btn-primary">Save</button>
+        <button className="btn btn-primary" disabled={loading}>
+          {loading ? 'Loading...' : 'Save'}
+        </button>
       </form>
+      <ErrorNewBadgeModal error={error} isOpen={isOpen} onClose={onClose} />
+      {/* {error && <p className="text-danger">{error.message}</p>} */}
     </div>
   )
 }

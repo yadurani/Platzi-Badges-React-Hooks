@@ -397,15 +397,6 @@
       "avatarUrl": "https://www.gravatar.com/avatar/2418114906f2bea38d7485340a7f0461?d=identicon"
     },
     {
-      "id": "919f32ca-0d97-4639-8aca-8c4c888e6caf",
-      "firstName": "Winifred",
-      "lastName": "Thiel",
-      "email": "Euna.Bartoletti@hotmail.com",
-      "jobTitle": "Regional Metrics Administrator",
-      "twitter": "WinifredThiel14630",
-      "avatarUrl": "https://www.gravatar.com/avatar/b4f66246e7ff34e9a4a176fb58d6ecda?d=identicon"
-    },
-    {
       "id": "43a0a0df-9a0a-4a56-aa0c-2efc3a2b5897",
       "firstName": "Reyna",
       "lastName": "Gislason",
@@ -433,21 +424,12 @@
       "id": "EYR2BVQ"
     },
     {
-      "firstName": "Carolynn",
-      "lastName": "Kaufman",
-      "email": "carolynn@example.com",
-      "avatarUrl": "https://www.gravatar.com/avatar/580a552f26ac5e3a0817c3ecc5b9d690?d=identicon",
-      "jobTitle": "Lawyer",
-      "twitter": "ckaufmanpr",
-      "id": "npaYZKI"
-    },
-    {
-      "firstName": "Pepe",
-      "lastName": "Lopez",
-      "email": "pepe@gmail.com",
-      "jobTitle": "Desarrollador",
-      "twitter": "pee",
-      "id": "8_EPuar"
+      "firstName": "yadu",
+      "lastName": "rivera",
+      "email": "yadulopez21@gmail.com",
+      "jobTitle": "Desarrolladora Frontend",
+      "twitter": "yadulopez",
+      "id": "A887m_5"
     }
   ]
 }
