@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import useSearchFilter from '../hooks/useSearchFilter'
 
@@ -18,6 +18,7 @@ const BadgesList = ({ badges, loading }) => {
           className="form-control"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          placeholder="Busca tu nombre aquí"
         />
       </div>
       <ul className="list-unstyled">
